@@ -18,9 +18,6 @@ from splinter import Browser
 import time
 
 # In[ FNS ]
-
-def match_ratio(string_a, string_b):
-    return SequenceMatcher(None, string_a, string_b).ratio()
  
 # ******* MEAT N POTATOES *******
 def html_parser(url):
@@ -46,14 +43,25 @@ def html_parser(url):
     return bs(html, 'html.parser')
 
 
-def read_html(file):
+def html_file_reader(file):
     '''
     with open('yo1.html', 'w') as file:
     file.write(str(soup))
-    
     '''
 
     return codecs.open(file, 'r')
+
+def html_file_writer( var, file_name, i):
+    '''
+    Writes Beautiful Soup as file    
+    '''
+    with open(str('html/' + file_name + str(i)+'.html'), 'w') as file:
+        file.write(str(var))
+
+
+def match_ratio(string_a, string_b):
+    return SequenceMatcher(None, string_a, string_b).ratio()
+
 
 def sleep_timer(minimum, maximim):
     '''
@@ -68,10 +76,6 @@ def test():
     Quick test to see if import of module is successfull!
     '''
     print('**'*20,'\nScrape Module up and running!\n','**'*20)
-    
-def website_catcher( var, file_name, i):
-    with open(str('html/' + file_name + str(i)+'.html'), 'w') as file:
-        file.write(str(var))
         
 
 #def var_zipper( list1, list2, args*) for consequent lists

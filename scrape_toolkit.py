@@ -7,6 +7,7 @@ Created on Wed Apr 24 21:17:54 2019
 """
 # In[ Dependencies ]
 from bs4 import BeautifulSoup as bs
+import codecs
 from difflib import SequenceMatcher
 import json
 import pandas as pd
@@ -42,17 +43,24 @@ def html_parser(url):
     
     browser.quit()
     
-    return bs(html, 'html.parser') 
+    return bs(html, 'html.parser')
 
+
+def read_html(file):
+    '''
+    with open('yo1.html', 'w') as file:
+    file.write(str(soup))
+    
+    '''
+
+    return codecs.open(file, 'r')
 
 def sleep_timer(minimum, maximim):
     '''
-    
     Random sleep timer within range of min max time args
-    
     '''
     
-    time.sleep(random.randint( minimum, maximim))
+    return time.sleep(random.randint( minimum, maximim))
     
     
 def test():
@@ -64,28 +72,57 @@ def test():
 def website_catcher( var, file_name, i):
     with open(str('html/' + file_name + str(i)+'.html'), 'w') as file:
         file.write(str(var))
+        
 
+#def var_zipper( list1, list2, args*) for consequent lists
+
+#def var_zipper( variable_list, content_list):
+#    '''
+#    Zips a list of variables with a list of contents.
+#    
+#    EX.
+#    variable_list = [link1, link2]
+#    content_list = ['link1.com', 'link2.com']
+#    
+#    var_zipper( variable_list, content_list)
+#    '''
+#    
+#    for num, item in enumerate(content_list):
+#        variable_list[num] = item
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+###########################
+#
 # SIMPLE SCRIPTS
+#
+###########################
 
-'''
-# In[]
-
-list_ = []
-
-for num, item in enumerate(list_):
-    print(num)
-    print(item)
-    print( '*'*40, 'Item 1', '*'*40)
+#
+## In[]
+#
+#list_ = []
+#
+#for num, item in enumerate(list_):
+#    print(num)
+#    print(item)
+#    print( '*'*40, 'Item 1', '*'*40)
+#    
+## In[]
+#
+#list_ = [one_dollar_main, two_bills_main, three_bills_main, five_bills_main, ten_bills_main, twenty_bills_main, thirty_bills_main]
+#
+#for num, item in enumerate(list_):
+#    scrape.website_catcher( var = item, file_name =  'scratcher', i = num)
     
-# In[]
 
-list_ = [one_dollar_main, two_bills_main, three_bills_main, five_bills_main, ten_bills_main, twenty_bills_main, thirty_bills_main]
-
-for num, item in enumerate(list_):
-    scrape.website_catcher( var = item, file_name =  'scratcher', i = num)
-    
-
-'''
 
 
 

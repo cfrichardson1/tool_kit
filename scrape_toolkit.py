@@ -20,7 +20,7 @@ import time
 # In[ FNS ]
  
 # ******* MEAT N POTATOES *******
-def html_parser(url):
+def html_parser(url = '', min_time = 5, max_time = 10):
     '''
     Returns html in beautiful soup format.
     
@@ -36,7 +36,7 @@ def html_parser(url):
     browser.visit(url)     # visit link
     
     html = browser.html
-    sleep_timer(5,10)
+    sleep_timer(min_time,max_time)
     
     browser.quit()
     

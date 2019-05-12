@@ -45,17 +45,15 @@ def html_parser(url = '', min_time = 5, max_time = 10):
 
 def html_file_reader(file):
     '''
-    with open('yo1.html', 'w') as file:
-    file.write(str(soup))
     '''
 
     return codecs.open(file, 'r')
 
-def html_file_writer( var, file_name, i):
+def html_file_writer( var, file_name):
     '''
     Writes Beautiful Soup as file    
     '''
-    with open(str('html/' + file_name + str(i)+'.html'), 'w') as file:
+    with open(str('html/' + file_name +'.html'), 'w') as file:
         file.write(str(var))
 
 

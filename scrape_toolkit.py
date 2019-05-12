@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Apr 24 21:17:54 2019
+Created on Wed Apr 24
 
 @author: chrisrichardson
+
+PUPROSE:
+    To  further streamline scrape techniques and improve overall skill,  logic, and  more!
+    
+    
+FUTURE:
+    1) Convert  all FN to OOP FNs
+    2) Segment  Dependencies based on FN & Comment  Out
+    3) 
+    
 """
 # In[ Dependencies ]
 from bs4 import BeautifulSoup as bs
@@ -53,7 +63,7 @@ def html_file_writer( var, file_name):
     '''
     Writes Beautiful Soup as file    
     '''
-    with open(str('html/' + file_name +'.html'), 'w') as file:
+    with open(str(file_name), 'w') as file:
         file.write(str(var))
 
 

@@ -61,7 +61,7 @@ def html_file_reader(file):
     Reads in HTML files
     '''
 
-    return codecs.open(file, 'r')
+    return bs(codecs.open(file, 'r'))
 
 def html_file_writer( var, file_name):
     '''

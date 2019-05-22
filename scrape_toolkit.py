@@ -28,7 +28,10 @@ from splinter import Browser
 import time
 
 # In[ FNS ]
- 
+def browser():
+    executable_path = {'executable_path': 'chromedriver.exe'}
+    return Browser("chrome", **executable_path, headless=False)
+
 # ******* MEAT N POTATOES *******
 def html_parser(url = '', min_time = 5, max_time = 10):
     '''
@@ -67,10 +70,37 @@ def html_file_writer( var, file_name):
         file.write(str(var))
 
 
+        
 def match_ratio(string_a, string_b):
     return SequenceMatcher(None, string_a, string_b).ratio()
 
+def sequential_list_separator(list_to_seperate):
+    '''
+    Takes in non sequential 0 to nth list and returns a list of
+    lists based on sequential grouping
+    '''
+    seperated_lists = []
+    
+    sub_list = []
+    prev_num = min(sorted(list_to_seperate))-1
+    
+    for index in list_to_seperate:
+        
+        if prev_num+1 != index: # if not sequential
+            
+            # if sublist has items, it is appended and emptied
+            if sub_list:
+                seperated_lists.append(sub_list)
+                sub_list = []
+                
+        sub_list.append(index) 
+        
+        prev_num = index
+        
+    seperated_lists.append(sub_list)
 
+    return seperated_lists
+    
 def sleep_timer(minimum, maximim):
     '''
     Random sleep timer within range of min max time args

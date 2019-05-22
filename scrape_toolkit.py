@@ -58,6 +58,7 @@ def html_parser(url = '', min_time = 5, max_time = 10):
 
 def html_file_reader(file):
     '''
+    Reads in HTML files
     '''
 
     return codecs.open(file, 'r')
@@ -69,9 +70,12 @@ def html_file_writer( var, file_name):
     with open(str(file_name), 'w') as file:
         file.write(str(var))
 
-
         
 def match_ratio(string_a, string_b):
+    '''
+    Returns a percentage of likelyhood that string_a & string_b
+    are similar.
+    '''
     return SequenceMatcher(None, string_a, string_b).ratio()
 
 def sequential_list_separator(list_to_seperate):

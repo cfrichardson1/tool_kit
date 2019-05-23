@@ -58,10 +58,12 @@ def html_parser(url = '', min_time = 5, max_time = 10):
 
 def html_file_reader(file):
     '''
-    Reads in HTML files and returns BeautifulSoup object
+    Reads in HTML files and returns HTML.
+    If BS object is needed, wrap FN in bs()
     '''
 
     return bs(codecs.open(file, 'r'), 'html.parser')
+
 
 def html_file_writer( var, file_name):
     '''

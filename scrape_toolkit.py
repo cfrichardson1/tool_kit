@@ -80,6 +80,9 @@ def match_ratio(string_a, string_b):
     '''
     return SequenceMatcher(None, string_a, string_b).ratio()
 
+def percent(a, b):
+    return (round((a/b),4)*100)
+
 def sequential_list_separator(list_to_seperate):
     '''
     Takes in non sequential 0 to nth list and returns a list of

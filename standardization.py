@@ -5,6 +5,8 @@ Created on Mon Jul 22 00:27:58 2019
 @author: crich
 """
 import os
+import pandas as pd
+import re
 
 os.getcwd()
 # In[]
@@ -78,9 +80,8 @@ class standardized_df:
             column_str_split = 0                 
             split_df_column_count = 0
             try:
-                self.column_str_split = df[column].str.split(', ',expand=True)
-                self.column_str_split[['ID', 'Owner']] = df[['ID', 'Owner']].copy()
-
+                column_str_split = df[column].str.split(', ',expand=True)
+                column_str_split[['ID', 'Owner']] = df[['ID', 'Owner']].copy()
                 
                 split_df_column_count = column_str_split.shape[1]
                             
@@ -93,11 +94,13 @@ class standardized_df:
                 for num in range(split_df_column_count):
                     split_column_names.append((column + ' ' + str(num)))
                 
+                
+                # Attempting to merge split df back to og_df
 #                self.df_copy[split_column_names] = self.column_str_split
                 
 #                self.df_copy[split_column_names]
-
-        return self.column_str_split
+                self.df.merge(column_str_split, right_on = 'Owner')
+        return self.df
 
 # In[]
 test = standardized_df(df).splitter()
@@ -113,12 +116,6 @@ test.splitter()
 for column in df.columns:
     print(column)
 # In[]
-
-
-
-# In[]
-import pandas as pd
-import re
 
 df = pd.read_csv(r'C:\Users\crich\Desktop\gDrive\BootCamp\DataViz-Lesson-Plans\01-Lesson-Plans\09-SQL\3\Activities\02-Stu_Data_Normalization\Resources\pets.csv')
 

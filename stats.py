@@ -56,3 +56,17 @@ def multi_mode(arr):
 
     # Return list of tuples containing most frequently occurring elements
     return [(key, val) for key, val in counter.items() if val == freq]
+
+
+def quartile(arry = None, quartile = None):
+    '''
+    Calculates the 1st lower-q, half, or 3rd upper-quartiles
+    '''
+    if quartile == 'first':
+    np.percentile(arr,quartile)
+
+    if quartile == 'half' || quartile == 'mean':
+
+    if quartile == 'third':
+
+    return

@@ -16,7 +16,7 @@ df = pd.read_csv(r'C:\Users\crich\Desktop\gDrive\BootCamp\DataViz-Lesson-Plans\0
 
 # In[]
 
-df.iloc[2,2] = 'Spinkles, the yoyo, cat!'
+df.iloc[2,2] = 'Spinkles, Yoyo, Chocalte, Koojo, Chicken'
 
 # In[]
 
@@ -26,45 +26,7 @@ df.iloc[:,2].str.split(', ', expand =True).shape[1]
 
 
 
-# In[]
-
-
-
-class standardized_df_og:
-      
-    def __init__(self, df = None):
-        self.df = df
-        self.df_copy = df.copy()
-        
-    def splitter(self):
-        
-        for column in self.df.columns:
-            # attempt to split column based on 
-            
-            column_str_split = 0                 
-            split_df_column_count = 0
-            try:
-                column_str_split = df[column].str.split(', ',expand=True)         
-                split_df_column_count = column_str_split.shape[1]
-                            
-            except:
-                pass
-            
-            if split_df_column_count:
-                # loops over old and new columns, insuring there is nothing longer than len 2               
-                split_column_names = []
-                for num in range(split_df_column_count):
-                    split_column_names.append((column + ' ' + str(num)))
-                
-                self.df_copy[split_column_names] = column_str_split
-                
-#                self.df_copy[split_column_names]
-
-        return self.df_copy
-
-   
-                    
-# In[]
+# In[ Beta ]
 
 class standardized_df:
     
@@ -72,7 +34,7 @@ class standardized_df:
         self.df = df
         self.df_copy = df.copy()
         
-    def splitter(self):
+    def splitter(self, primary_key = None):
         
         for column in self.df.columns:
             # attempt to split column based on 
@@ -81,10 +43,9 @@ class standardized_df:
             split_df_column_count = 0
             try:
                 column_str_split = df[column].str.split(', ',expand=True)
-                column_str_split[['ID', 'Owner']] = df[['ID', 'Owner']].copy()
                 
                 split_df_column_count = column_str_split.shape[1]
-                            
+
             except:
                 pass
             
@@ -93,20 +54,185 @@ class standardized_df:
                 split_column_names = []
                 for num in range(split_df_column_count):
                     split_column_names.append((column + ' ' + str(num)))
-                
-                
+
+#                column_str_split.column =
+
+#                column_str_split[primary_key] = df[primary_key].copy()
+
                 # Attempting to merge split df back to og_df
 #                self.df_copy[split_column_names] = self.column_str_split
                 
 #                self.df_copy[split_column_names]
-                self.df.merge(column_str_split, right_on = 'Owner')
-        return self.df
+
+        return column_str_split
+# In[ Dev ]
+
+class standardized_df:
+    
+    def __init__(self, df = None):
+        self.df = df
+        self.df_copy = df.copy()
+        
+    def splitter(self, primary_key = None):
+        
+        dfs = []
+        for column in self.df.columns:
+            # attempt to split column based on 
+            dfs.append(column)
+
+            column_str_split = 0                 
+            split_df_column_count = 0
+            try:
+                column_str_split = df[column].str.split(', ',expand=True)
+                
+                split_df_column_count = column_str_split.shape[1]
+
+            except:
+                pass
+            
+            
+            if split_df_column_count > 1:
+                # loops over old and new columns, insuring there is nothing longer than len 2               
+                split_column_names = []
+                for num in range(split_df_column_count):
+                    split_column_names.append((column + '_' + str(num)))
+
+                column_str_split.columns = split_column_names
+#            else:
+#                column_str_split.columns = column
+#                dfs.append(column)
+            
+#            column_str_split[['ID','Owner']] = df[['ID','Owner']].copy()
+
+            dfs.append(column_str_split)
+            
+# after building df of columns
+#            column_str_split[primary_key] = df[primary_key].copy()
+                
+            # Attempting to merge split df back to og_df
+#                self.df_copy[split_column_names] = self.column_str_split
+            
+#                self.df_copy[split_column_names]
+
+        return column_str_split
+
+test = standardized_df(df)
+dfs_build = test.splitter(['ID','Owner'])
+
+# In[ Dev ]
+
+class standardized_df:
+    
+    def __init__(self, df = None):
+        self.df = df
+        self.df_copy = df.copy()
+        
+    def splitter(self, primary_key = None):
+        
+        dfs = []
+        for column in self.df.columns:
+            # attempt to split column based on 
+            dfs.append(column)
+
+            column_str_split = 0                 
+            split_df_column_count = 0
+            try:
+                column_str_split = df[column].str.split(', ',expand=True)
+                
+                split_df_column_count = column_str_split.shape[1]
+
+            except:
+                pass
+            
+            
+            if split_df_column_count > 1:
+                # loops over old and new columns, insuring there is nothing longer than len 2               
+                split_column_names = []
+                for num in range(split_df_column_count):
+                    split_column_names.append((column + '_' + str(num)))
+
+                column_str_split.columns = split_column_names
+#            else:
+#                column_str_split.columns = column
+#                dfs.append(column)
+
+
+            
+            
+#            column_str_split[['ID','Owner']] = df[['ID','Owner']].copy()
+
+            dfs.append(column_str_split)
+            
+
+# after building df of columns
+#            column_str_split[primary_key] = df[primary_key].copy()
+                
+
+            # Attempting to merge split df back to og_df
+#                self.df_copy[split_column_names] = self.column_str_split
+            
+#                self.df_copy[split_column_names]
+
+
+        return column_str_split
+
+    def test(self, primary_key = None):
+        
+        dfs = []
+        for column in self.df.columns:
+            # attempt to split column based on 
+            dfs.append(column)
+
+            column_str_split = 0                 
+            split_df_column_count = 0
+            try:
+                column_str_split = df[column].str.split(', ',expand=True)
+                
+                split_df_column_count = column_str_split.shape[1]
+
+            except:
+                pass
+            
+            
+            if split_df_column_count > 1:
+                # loops over old and new columns, insuring there is nothing longer than len 2               
+                split_column_names = []
+                for num in range(split_df_column_count):
+                    split_column_names.append((column + '_' + str(num)))
+
+                column_str_split.columns = split_column_names
+#            else:
+#                column_str_split.columns = column
+#                dfs.append(column)
+
+#            column_str_split[['ID','Owner']] = df[['ID','Owner']].copy()
+
+            dfs.append(column_str_split)
+            
+# after building df of columns
+#            column_str_split[primary_key] = df[primary_key].copy()
+                
+
+            # Attempting to merge split df back to og_df
+#                self.df_copy[split_column_names] = self.column_str_split
+            
+#                self.df_copy[split_column_names]
+
+
+        return column_str_split
+
+
+test = standardized_df(df)
+dfs_splitter = test.splitter(['ID','Owner'])
+dfs_test = test.test(['ID','Owner'])
+
+
+# In[ NOTES ]
+
+1) column appears to get mutated after the first line of the for loop
 
 # In[]
-test = standardized_df(df).splitter()
-test
 
-# In[]
 test = standardized_df(df)
 test.splitter()
 
@@ -117,7 +243,7 @@ for column in df.columns:
     print(column)
 # In[]
 
-df = pd.read_csv(r'C:\Users\crich\Desktop\gDrive\BootCamp\DataViz-Lesson-Plans\01-Lesson-Plans\09-SQL\3\Activities\02-Stu_Data_Normalization\Resources\pets.csv')
+#df = pd.read_csv(r'C:\Users\crich\Desktop\gDrive\BootCamp\DataViz-Lesson-Plans\01-Lesson-Plans\09-SQL\3\Activities\02-Stu_Data_Normalization\Resources\pets.csv')
 
 # duplciate original df for mutation
 normy_df = df.copy()

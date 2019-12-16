@@ -1,25 +1,85 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jul 23 23:04:54 2019
 
-@author: crich
 """
 # In[]
+<div class="col-xs-12 col-sm-6">
+test.find('div', class_ ="col-xs-12 col-sm-6")
 
-for dfs in dfs_build:
-    
-    
+# In[]
+
+body.find_all('a', class_ = 'title')
+
+# In[]
+
+# In[]
 
 
 # In[]
 
-df['Owner'].str.split(', ', expand = True)
 
-
+# In[]
 
 
 # In[]
 
-len_ = df[['ID','Owner']].copy()
+# In[]
 
 
+# In[]
+
+
+
+# In[]
+# In[]
+
+# In[]
+
+
+# In[]
+
+# In[]
+
+
+# In[]
+
+
+# In[]
+
+
+# In[]
+
+# In[]
+
+
+# In[]
+
+
+
+# In[]
+# In[]
+
+# In[]
+
+
+# In[]
+
+# In[]
+
+
+# In[]
+
+
+# In[]
+
+
+# In[]
+
+# In[]
+
+
+# In[]
+
+
+
+# In[]

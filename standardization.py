@@ -59,12 +59,16 @@ class standardized_df:
 
 #                column_str_split[primary_key] = df[primary_key].copy()
 
-                # Attempting to merge split df back to og_df
+#                Attempting to merge split df back to og_df
 #                self.df_copy[split_column_names] = self.column_str_split
                 
 #                self.df_copy[split_column_names]
 
         return column_str_split
+    
+test = standardized_df(df)
+dfs_build = test.splitter(['ID','Owner'])
+
 # In[ Dev ]
 
 class standardized_df:
@@ -217,7 +221,6 @@ class standardized_df:
 #                self.df_copy[split_column_names] = self.column_str_split
             
 #                self.df_copy[split_column_names]
-
 
         return column_str_split
 

@@ -1,14 +1,18 @@
-# -*- coding: utf-8 -*-
-"""
+'''
+None FN tools
+'''
 
-"""
+# In[ ** ITERATING TOOL ** ]
+# Inputs
+df = ?
+# ------
+count = 0
+
 # In[]
-<div class="col-xs-12 col-sm-6">
-test.find('div', class_ ="col-xs-12 col-sm-6")
-
-# In[]
-
-body.find_all('a', class_ = 'title')
+while count != len(df):
+    print(df[count])
+    count += 1
+    break
 
 # In[]
 

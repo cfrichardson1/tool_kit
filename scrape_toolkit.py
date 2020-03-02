@@ -69,12 +69,29 @@ def html_file_writer( var, file_name, uni = False):
     '''
     Writes Beautiful Soup as file
     '''
-    if uni:
-        with open(str(file_name), 'w') as file:
-            file.write(str(var.text.encode("utf-8")))
-    else:
-        with open(str(file_name), 'w') as file:
-            file.write(str(var))
+    try:
+        if uni:
+            with open(str(file_name), 'w') as file:
+                file.write(str(var.text.encode("utf-8")))
+
+                # does not write html correctly......?
+                # file.write(str(var.encode("utf-8")))
+
+        else:
+            with open(str(file_name), 'w') as file:
+                file.write(str(var))
+    except:
+            if uni:
+                with open(str(file_name), 'w') as file:
+                    file.write(str(var.encode("utf-8")))
+
+                    # does not write html correctly......?
+                    # file.write(str(var.encode("utf-8")))
+
+            else:
+                with open(str(file_name), 'w') as file:
+                    file.write(str(var))
+
 
 
 def match_ratio(string_a, string_b):
@@ -92,6 +109,10 @@ def sequential_list_separator(list_to_seperate):
     '''
     Takes in non sequential 0 to nth list and returns a list of
     lists based on sequential grouping
+
+        i.e. [[1,3,5], [5,8,3,4], [3,5,7,1,34]]
+                        ==OUTPUT==
+                [1,3,5,5,8,3,4,3,5,7,1,34]
     '''
     seperated_lists = []
 
